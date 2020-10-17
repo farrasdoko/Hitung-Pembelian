@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var lbStepper3: UIStepper!
     @IBOutlet weak var lbStepper2: UIStepper!
     @IBOutlet weak var lbStepper: UIStepper!
+    @IBOutlet weak var lblResult: UILabel!
+    
+    var isChange = false
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,12 +43,34 @@ class ViewController: UIViewController {
     }
     @IBAction func stepperValueChanged3(_ sender: UIStepper) {
         tfhasil3.text = Int(sender.value).description
+        
+//        isChange = true
+        updateResult()
     }
+    
     @IBAction func stepperValueChanged2(_ sender: UIStepper) {
         tfhasil2.text = Int(sender.value).description
+        
+//        isChange = true
+        updateResult()
     }
+    
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         tfhasil1.text = Int(sender.value).description
+        
+//        isChange = true
+        updateResult()
+    }
+    
+    func updateResult() {
+        
+        let res1 = Int(tfhasil1.text!)!
+        let res2 = Int(tfhasil2.text!)!
+        let res3 = Int(tfhasil3.text!)!
+        
+        let total = res1 + res2 + res3
+        lblResult.text = String(describing: total)
+//        isChange = false
     }
     
     override func didReceiveMemoryWarning() {
